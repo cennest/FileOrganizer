@@ -1,0 +1,31 @@
+
+# XCode files/directories
+xcuserdata
+Pods/
+DerivedData/
+build/
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+*.xcworkspace
+
+# Build products
+build/
+*.o
+*.LinkFileList
+*.hmap
+
+# OSX Files
+.DS_Store
+
+# Automatic backup files
+.DS_Store
+*~.nib
+*.swp
+*~
+*.dat
+*.dep
+

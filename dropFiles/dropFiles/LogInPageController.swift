@@ -34,7 +34,7 @@ class LoginPageController: UIViewController {
     }
     
     @IBAction func handleForgotPasswordTap(sender: AnyObject) {
-        
+      
     }
     
     @IBAction func handleSignInTap(sender: AnyObject) {
@@ -43,24 +43,26 @@ class LoginPageController: UIViewController {
         
         if self.checkCredential(userName, password:password) {
             //verify userlogin and Password
-            var isLoginSuccess = self.verifyUser(userName,password:password)
-            if isLoginSuccess {
-                alertController.showMessage(UsersConstants.kSuccessfulSignInMessage, controller: self)
-                logInTextField.text = ""
-                passwordTextField.text = ""
-            } else {
-                alertController.showMessage(UsersConstants.kFailingSignInMessage, controller: self)
-                passwordTextField.text = ""
-            }
+            self.verifyUser(userName,password:password)
+            //sussess Alert view
         }
     }
     
-    func verifyUser(userName:String, password:String) -> Bool {
+    func verifyUser(userName:String, password:String) {
         var dataManager = DataManager.sharedDataAccess()
-        return dataManager.userLogin(userName,password:password)
+        var result = dataManager.userLogin(userName,password:password)
+        
+        if result {
+            alertController.showMessage(UsersConstants.kSuccessfulSignInMessage, controller: self)
+        } else {
+            alertController.showMessage(UsersConstants.kFailingSignInMessage, controller: self)
+        }
     }
     
-    
+    func showMessage() {
+        
+    }
+
     func checkCredential(userName:String, password:String)  -> Bool {
         if userName.isEmpty {
             alertController.showMessage(UsersConstants.kEnterUserName, controller: self)
