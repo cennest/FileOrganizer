@@ -58,8 +58,15 @@ class DataManager:NSObject {
         return isLoginSuccess!
     }
     
-    func createFile() {
-    
+    func createFile(title:String, fileID:NSNumber, size:String, location:String, createdDate:String , modifiedDate:String , categoryID: NSNumber, isDownloaded:Bool, userID:NSNumber) -> Files {
+        var error:NSError?
+        var newUser = context?.insertData(title, fileID: fileID, size: size, location: location, createdDate: createdDate, modifiedDate: modifiedDate, categoryID: categoryID, isDownloaded: isDownloaded, userID: userID)
+        context?.save(&error)
+        if let err = error {
+            println(err.description)
+        }
+        self.saveContext()
+        return newUser!
     }
     
     func uploadFile() {
