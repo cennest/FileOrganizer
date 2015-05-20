@@ -54,15 +54,15 @@ class LoginPageController: UIViewController {
         
         if result {
             alertController.showMessage(UsersConstants.kSuccessfulSignInMessage, controller: self)
+            
+            var storyboard:UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
+            var vc:UIViewController = storyboard.instantiateViewControllerWithIdentifier("fileViewController") as FileOraganizerViewController
+            self.presentViewController(vc, animated:true, completion:nil)
         } else {
             alertController.showMessage(UsersConstants.kFailingSignInMessage, controller: self)
         }
     }
     
-    func showMessage() {
-        
-    }
-
     func checkCredential(userName:String, password:String)  -> Bool {
         if userName.isEmpty {
             alertController.showMessage(UsersConstants.kEnterUserName, controller: self)

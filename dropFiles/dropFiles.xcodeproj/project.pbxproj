@@ -107,11 +107,11 @@
 		0C739F1D1AFB9C4F007B0A81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0C9DB9F71AF0AF6A00771B6F /* dropFiles.xcdatamodeld */,
 				0C79C9C91AF8CFDF00576B4A /* Users.swift */,
 				0CB00DCF1AFCF3C400CF0E87 /* NSManagedObjectContext+Users.swift */,
 				0CB00DD11AFCF3FE00CF0E87 /* Users+Enhance.swift */,
 				0C739F141AFB461B007B0A81 /* DataManager.swift */,
-				0C9DB9F71AF0AF6A00771B6F /* dropFiles.xcdatamodeld */,
 				0C61D5A21B02126200E54774 /* Files.swift */,
 				0C61D5A41B02148700E54774 /* NSManagedObjectContext+Files.swift */,
 				0C61D5A61B02149B00E54774 /* Files+Enhance.swift */,
