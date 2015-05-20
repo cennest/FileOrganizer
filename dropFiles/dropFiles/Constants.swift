@@ -30,6 +30,7 @@ struct User {
 
 struct NSManagedObjectContextConstants {
     static var kUserEntity = "Users"
+    static var kFileEntity = "Files"
 }
 
 struct UsersConstants {

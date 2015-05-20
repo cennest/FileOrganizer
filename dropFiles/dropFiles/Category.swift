@@ -10,5 +10,14 @@ import Foundation
 
 
 enum Category {
+    case Document
+    case Image
+    case Video
+}
 
+enum SelectionOptions {
+    case Document
+    case Image
+    case Video
+    case AllFolder
 }
