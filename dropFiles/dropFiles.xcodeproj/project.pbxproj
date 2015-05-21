@@ -31,6 +31,27 @@
 		0CCAEB5C1B0A1B8E00745856 /* upload-2-xxl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCAEB591B0A1B8E00745856 /* upload-2-xxl.png */; };
 		0CCAEB5E1B0A1CB000745856 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCAEB5D1B0A1CB000745856 /* trash.png */; };
 		0CCAEB601B0A1E4A00745856 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCAEB5F1B0A1E4A00745856 /* Category.swift */; };
+		0CD7A58E1B0E02DB00286D5D /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A58D1B0E02DB00286D5D /* StorageService.swift */; };
+		0CD7A6401B0E0E6200286D5D /* AuthenticationCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6131B0E0E6200286D5D /* AuthenticationCredential.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6411B0E0E6200286D5D /* CloudStorageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6161B0E0E6200286D5D /* CloudStorageClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6421B0E0E6200286D5D /* TableFetchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6181B0E0E6200286D5D /* TableFetchRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6431B0E0E6200286D5D /* Blob.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A61B1B0E0E6200286D5D /* Blob.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6441B0E0E6200286D5D /* BlobContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A61D1B0E0E6200286D5D /* BlobContainer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6451B0E0E6200286D5D /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A61F1B0E0E6200286D5D /* Queue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6461B0E0E6200286D5D /* QueueMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6211B0E0E6200286D5D /* QueueMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6471B0E0E6200286D5D /* TableEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6231B0E0E6200286D5D /* TableEntity.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6481B0E0E6200286D5D /* SimpleBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6281B0E0E6200286D5D /* SimpleBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6491B0E0E6200286D5D /* CloudURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A62A1B0E0E6200286D5D /* CloudURLRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A64A1B0E0E6200286D5D /* AtomPubEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A62E1B0E0E6200286D5D /* AtomPubEntry.m */; };
+		0CD7A64B1B0E0E6200286D5D /* BlobParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6301B0E0E6200286D5D /* BlobParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A64C1B0E0E6200286D5D /* ContainerParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6321B0E0E6200286D5D /* ContainerParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A64D1B0E0E6200286D5D /* QueueMessageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6341B0E0E6200286D5D /* QueueMessageParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A64E1B0E0E6200286D5D /* QueueParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6361B0E0E6200286D5D /* QueueParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A64F1B0E0E6200286D5D /* XmlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A6381B0E0E6200286D5D /* XmlHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6501B0E0E6200286D5D /* AzureFilterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A63B1B0E0E6200286D5D /* AzureFilterBuilder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6511B0E0E6200286D5D /* PredicateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A63D1B0E0E6200286D5D /* PredicateParser.m */; };
+		0CD7A6521B0E0E6200286D5D /* PredicateParserAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD7A63F1B0E0E6200286D5D /* PredicateParserAppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0CD7A6541B0E186700286D5D /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD7A6531B0E186700286D5D /* libxml2.2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +93,49 @@
 		0CCAEB591B0A1B8E00745856 /* upload-2-xxl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload-2-xxl.png"; sourceTree = "<group>"; };
 		0CCAEB5D1B0A1CB000745856 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
 		0CCAEB5F1B0A1E4A00745856 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0CD7A58D1B0E02DB00286D5D /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		0CD7A5951B0E0A2300286D5D /* dropFiles-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dropFiles-Bridging-Header.h"; sourceTree = "<group>"; };
+		0CD7A6121B0E0E6200286D5D /* AuthenticationCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationCredential.h; sourceTree = "<group>"; };
+		0CD7A6131B0E0E6200286D5D /* AuthenticationCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationCredential.m; sourceTree = "<group>"; };
+		0CD7A6151B0E0E6200286D5D /* CloudStorageClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudStorageClient.h; sourceTree = "<group>"; };
+		0CD7A6161B0E0E6200286D5D /* CloudStorageClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudStorageClient.m; sourceTree = "<group>"; };
+		0CD7A6171B0E0E6200286D5D /* TableFetchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableFetchRequest.h; sourceTree = "<group>"; };
+		0CD7A6181B0E0E6200286D5D /* TableFetchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableFetchRequest.m; sourceTree = "<group>"; };
+		0CD7A61A1B0E0E6200286D5D /* Blob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blob.h; sourceTree = "<group>"; };
+		0CD7A61B1B0E0E6200286D5D /* Blob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Blob.m; sourceTree = "<group>"; };
+		0CD7A61C1B0E0E6200286D5D /* BlobContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobContainer.h; sourceTree = "<group>"; };
+		0CD7A61D1B0E0E6200286D5D /* BlobContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlobContainer.m; sourceTree = "<group>"; };
+		0CD7A61E1B0E0E6200286D5D /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
+		0CD7A61F1B0E0E6200286D5D /* Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
+		0CD7A6201B0E0E6200286D5D /* QueueMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueMessage.h; sourceTree = "<group>"; };
+		0CD7A6211B0E0E6200286D5D /* QueueMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueMessage.m; sourceTree = "<group>"; };
+		0CD7A6221B0E0E6200286D5D /* TableEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableEntity.h; sourceTree = "<group>"; };
+		0CD7A6231B0E0E6200286D5D /* TableEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableEntity.m; sourceTree = "<group>"; };
+		0CD7A6251B0E0E6200286D5D /* AuthenticationCredential+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AuthenticationCredential+Private.h"; sourceTree = "<group>"; };
+		0CD7A6271B0E0E6200286D5D /* SimpleBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleBase64.h; sourceTree = "<group>"; };
+		0CD7A6281B0E0E6200286D5D /* SimpleBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleBase64.m; sourceTree = "<group>"; };
+		0CD7A6291B0E0E6200286D5D /* CloudURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudURLRequest.h; sourceTree = "<group>"; };
+		0CD7A62A1B0E0E6200286D5D /* CloudURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudURLRequest.m; sourceTree = "<group>"; };
+		0CD7A62B1B0E0E6200286D5D /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
+		0CD7A62D1B0E0E6200286D5D /* AtomPubEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPubEntry.h; sourceTree = "<group>"; };
+		0CD7A62E1B0E0E6200286D5D /* AtomPubEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtomPubEntry.m; sourceTree = "<group>"; };
+		0CD7A62F1B0E0E6200286D5D /* BlobParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobParser.h; sourceTree = "<group>"; };
+		0CD7A6301B0E0E6200286D5D /* BlobParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlobParser.m; sourceTree = "<group>"; };
+		0CD7A6311B0E0E6200286D5D /* ContainerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerParser.h; sourceTree = "<group>"; };
+		0CD7A6321B0E0E6200286D5D /* ContainerParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerParser.m; sourceTree = "<group>"; };
+		0CD7A6331B0E0E6200286D5D /* QueueMessageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueMessageParser.h; sourceTree = "<group>"; };
+		0CD7A6341B0E0E6200286D5D /* QueueMessageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueMessageParser.m; sourceTree = "<group>"; };
+		0CD7A6351B0E0E6200286D5D /* QueueParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueParser.h; sourceTree = "<group>"; };
+		0CD7A6361B0E0E6200286D5D /* QueueParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueParser.m; sourceTree = "<group>"; };
+		0CD7A6371B0E0E6200286D5D /* XmlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlHelper.h; sourceTree = "<group>"; };
+		0CD7A6381B0E0E6200286D5D /* XmlHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlHelper.m; sourceTree = "<group>"; };
+		0CD7A63A1B0E0E6200286D5D /* AzureFilterBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzureFilterBuilder.h; sourceTree = "<group>"; };
+		0CD7A63B1B0E0E6200286D5D /* AzureFilterBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzureFilterBuilder.m; sourceTree = "<group>"; };
+		0CD7A63C1B0E0E6200286D5D /* PredicateParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PredicateParser.h; sourceTree = "<group>"; };
+		0CD7A63D1B0E0E6200286D5D /* PredicateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateParser.m; sourceTree = "<group>"; };
+		0CD7A63E1B0E0E6200286D5D /* PredicateParserAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PredicateParserAppDelegate.h; sourceTree = "<group>"; };
+		0CD7A63F1B0E0E6200286D5D /* PredicateParserAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PredicateParserAppDelegate.m; sourceTree = "<group>"; };
+		0CD7A6531B0E186700286D5D /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CD7A6541B0E186700286D5D /* libxml2.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +192,7 @@
 				0C79C9CB1AF8D3B400576B4A /* AlertController.swift */,
 				0CCAEB551B0A17A900745856 /* FileOraganizerViewController.swift */,
 				0CCAEB5F1B0A1E4A00745856 /* Category.swift */,
+				0CD7A58D1B0E02DB00286D5D /* StorageService.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -134,9 +200,11 @@
 		0C9DB9E71AF0AF6900771B6F = {
 			isa = PBXGroup;
 			children = (
+				0CD7A6101B0E0E6200286D5D /* Library */,
 				0C9DB9F21AF0AF6900771B6F /* dropFiles */,
 				0C9DBA0B1AF0AF6A00771B6F /* dropFilesTests */,
 				0C9DB9F11AF0AF6900771B6F /* Products */,
+				0CD7A6531B0E186700286D5D /* libxml2.2.dylib */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +220,7 @@
 		0C9DB9F21AF0AF6900771B6F /* dropFiles */ = {
 			isa = PBXGroup;
 			children = (
+				0CD7A5951B0E0A2300286D5D /* dropFiles-Bridging-Header.h */,
 				0C739F1C1AFB9C42007B0A81 /* Images */,
 				0C9DB9FC1AF0AF6A00771B6F /* Main.storyboard */,
 				0C9DB9FF1AF0AF6A00771B6F /* Images.xcassets */,
@@ -188,6 +257,109 @@
 				0C9DBA0D1AF0AF6A00771B6F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0CD7A6101B0E0E6200286D5D /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				0CD7A6111B0E0E6200286D5D /* Authentication */,
+				0CD7A6141B0E0E6200286D5D /* CloudStorage */,
+				0CD7A6191B0E0E6200286D5D /* Model */,
+				0CD7A6241B0E0E6200286D5D /* Private */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		0CD7A6111B0E0E6200286D5D /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				0CD7A6121B0E0E6200286D5D /* AuthenticationCredential.h */,
+				0CD7A6131B0E0E6200286D5D /* AuthenticationCredential.m */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		0CD7A6141B0E0E6200286D5D /* CloudStorage */ = {
+			isa = PBXGroup;
+			children = (
+				0CD7A6151B0E0E6200286D5D /* CloudStorageClient.h */,
+				0CD7A6161B0E0E6200286D5D /* CloudStorageClient.m */,
+				0CD7A6171B0E0E6200286D5D /* TableFetchRequest.h */,
+				0CD7A6181B0E0E6200286D5D /* TableFetchRequest.m */,
+			);
+			path = CloudStorage;
+			sourceTree = "<group>";
+		};
+		0CD7A6191B0E0E6200286D5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0CD7A61A1B0E0E6200286D5D /* Blob.h */,
+				0CD7A61B1B0E0E6200286D5D /* Blob.m */,
+				0CD7A61C1B0E0E6200286D5D /* BlobContainer.h */,
+				0CD7A61D1B0E0E6200286D5D /* BlobContainer.m */,
+				0CD7A61E1B0E0E6200286D5D /* Queue.h */,
+				0CD7A61F1B0E0E6200286D5D /* Queue.m */,
+				0CD7A6201B0E0E6200286D5D /* QueueMessage.h */,
+				0CD7A6211B0E0E6200286D5D /* QueueMessage.m */,
+				0CD7A6221B0E0E6200286D5D /* TableEntity.h */,
+				0CD7A6231B0E0E6200286D5D /* TableEntity.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0CD7A6241B0E0E6200286D5D /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				0CD7A6251B0E0E6200286D5D /* AuthenticationCredential+Private.h */,
+				0CD7A6261B0E0E6200286D5D /* Base64 */,
+				0CD7A6291B0E0E6200286D5D /* CloudURLRequest.h */,
+				0CD7A62A1B0E0E6200286D5D /* CloudURLRequest.m */,
+				0CD7A62B1B0E0E6200286D5D /* NSString+URLEncode.h */,
+				0CD7A62C1B0E0E6200286D5D /* Parser */,
+				0CD7A6391B0E0E6200286D5D /* PredicateConverter */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		0CD7A6261B0E0E6200286D5D /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				0CD7A6271B0E0E6200286D5D /* SimpleBase64.h */,
+				0CD7A6281B0E0E6200286D5D /* SimpleBase64.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
+		0CD7A62C1B0E0E6200286D5D /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				0CD7A62D1B0E0E6200286D5D /* AtomPubEntry.h */,
+				0CD7A62E1B0E0E6200286D5D /* AtomPubEntry.m */,
+				0CD7A62F1B0E0E6200286D5D /* BlobParser.h */,
+				0CD7A6301B0E0E6200286D5D /* BlobParser.m */,
+				0CD7A6311B0E0E6200286D5D /* ContainerParser.h */,
+				0CD7A6321B0E0E6200286D5D /* ContainerParser.m */,
+				0CD7A6331B0E0E6200286D5D /* QueueMessageParser.h */,
+				0CD7A6341B0E0E6200286D5D /* QueueMessageParser.m */,
+				0CD7A6351B0E0E6200286D5D /* QueueParser.h */,
+				0CD7A6361B0E0E6200286D5D /* QueueParser.m */,
+				0CD7A6371B0E0E6200286D5D /* XmlHelper.h */,
+				0CD7A6381B0E0E6200286D5D /* XmlHelper.m */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		0CD7A6391B0E0E6200286D5D /* PredicateConverter */ = {
+			isa = PBXGroup;
+			children = (
+				0CD7A63A1B0E0E6200286D5D /* AzureFilterBuilder.h */,
+				0CD7A63B1B0E0E6200286D5D /* AzureFilterBuilder.m */,
+				0CD7A63C1B0E0E6200286D5D /* PredicateParser.h */,
+				0CD7A63D1B0E0E6200286D5D /* PredicateParser.m */,
+				0CD7A63E1B0E0E6200286D5D /* PredicateParserAppDelegate.h */,
+				0CD7A63F1B0E0E6200286D5D /* PredicateParserAppDelegate.m */,
+			);
+			path = PredicateConverter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,21 +467,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CD7A6431B0E0E6200286D5D /* Blob.m in Sources */,
+				0CD7A64C1B0E0E6200286D5D /* ContainerParser.m in Sources */,
 				0C61D5A71B02149B00E54774 /* Files+Enhance.swift in Sources */,
+				0CD7A64E1B0E0E6200286D5D /* QueueParser.m in Sources */,
 				0C9DBA191AF0B46300771B6F /* SignUpPageController.swift in Sources */,
+				0CD7A64B1B0E0E6200286D5D /* BlobParser.m in Sources */,
 				0C61D5A31B02126200E54774 /* Files.swift in Sources */,
 				0CB00DD21AFCF3FE00CF0E87 /* Users+Enhance.swift in Sources */,
+				0CD7A6451B0E0E6200286D5D /* Queue.m in Sources */,
 				0C79C9CC1AF8D3B400576B4A /* AlertController.swift in Sources */,
+				0CD7A58E1B0E02DB00286D5D /* StorageService.swift in Sources */,
 				0CB00DD01AFCF3C400CF0E87 /* NSManagedObjectContext+Users.swift in Sources */,
+				0CD7A6441B0E0E6200286D5D /* BlobContainer.m in Sources */,
 				0C79C9CA1AF8CFDF00576B4A /* Users.swift in Sources */,
+				0CD7A6491B0E0E6200286D5D /* CloudURLRequest.m in Sources */,
+				0CD7A6411B0E0E6200286D5D /* CloudStorageClient.m in Sources */,
+				0CD7A6511B0E0E6200286D5D /* PredicateParser.m in Sources */,
+				0CD7A6421B0E0E6200286D5D /* TableFetchRequest.m in Sources */,
+				0CD7A6501B0E0E6200286D5D /* AzureFilterBuilder.m in Sources */,
 				0C8998C21B00C1F400E9E6E1 /* Constants.swift in Sources */,
+				0CD7A6401B0E0E6200286D5D /* AuthenticationCredential.m in Sources */,
+				0CD7A64D1B0E0E6200286D5D /* QueueMessageParser.m in Sources */,
 				0C9DB9F91AF0AF6A00771B6F /* dropFiles.xcdatamodeld in Sources */,
 				0C9DB9F61AF0AF6A00771B6F /* AppDelegate.swift in Sources */,
 				0C61D5A51B02148700E54774 /* NSManagedObjectContext+Files.swift in Sources */,
+				0CD7A64F1B0E0E6200286D5D /* XmlHelper.m in Sources */,
+				0CD7A6481B0E0E6200286D5D /* SimpleBase64.m in Sources */,
 				0CCAEB601B0A1E4A00745856 /* Category.swift in Sources */,
 				0C739F151AFB461B007B0A81 /* DataManager.swift in Sources */,
 				0CCAEB561B0A17A900745856 /* FileOraganizerViewController.swift in Sources */,
+				0CD7A6471B0E0E6200286D5D /* TableEntity.m in Sources */,
 				0C9DBA1B1AF0B51F00771B6F /* LogInPageController.swift in Sources */,
+				0CD7A6521B0E0E6200286D5D /* PredicateParserAppDelegate.m in Sources */,
+				0CD7A6461B0E0E6200286D5D /* QueueMessage.m in Sources */,
+				0CD7A64A1B0E0E6200286D5D /* AtomPubEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +581,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "dropFiles/dropFiles-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -425,6 +618,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "dropFiles/dropFiles-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -434,10 +628,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/kanchan/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Library/Authentication",
+					"$(PROJECT_DIR)/Library/CloudStorage",
+					"$(PROJECT_DIR)/Library/Model",
+					"$(PROJECT_DIR)/Library/Private",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = dropFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dropFiles/dropFiles-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -445,10 +649,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/kanchan/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Library/Authentication",
+					"$(PROJECT_DIR)/Library/CloudStorage",
+					"$(PROJECT_DIR)/Library/Model",
+					"$(PROJECT_DIR)/Library/Private",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = dropFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dropFiles/dropFiles-Bridging-Header.h";
 			};
 			name = Release;
 		};
