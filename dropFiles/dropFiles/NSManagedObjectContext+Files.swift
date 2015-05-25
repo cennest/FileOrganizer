@@ -17,4 +17,24 @@ extension NSManagedObjectContext {
         var result = newData.insertNewFile(title, fileID: fileID, size: size, location: location, createdDate: createdDate, modifiedDate: modifiedDate, categoryID: categoryID, isDownloaded: isDownloaded, userID: userID)
         return result
     }
+    
+    func getFileList() -> [Files] {
+        var files  = [Files]()
+        
+        var fetchRequest = NSFetchRequest(entityName: NSManagedObjectContextConstants.kFileEntity)
+
+        files = self.executeFetchRequest(fetchRequest, error: nil) as [Files]
+    
+        return files
+    }
+    
+    func getFileListForCategory(category:Category) -> [Files]  {
+        var files  = [Files]()
+        var fetchRequest = NSFetchRequest(entityName: NSManagedObjectContextConstants.kFileEntity)
+        var resultPredicate = NSPredicate(format: "categoryID == %d", category.hashValue+1)
+        fetchRequest.predicate = resultPredicate
+        files = self.executeFetchRequest(fetchRequest, error: nil) as [Files]
+      
+        return files
+    }
 }

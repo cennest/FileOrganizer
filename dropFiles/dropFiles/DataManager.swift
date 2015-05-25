@@ -77,14 +77,25 @@ class DataManager:NSObject {
     
     }
 
-    func getFileList() {
+    func getFileList() -> [Files] {
+        var fileList = context?.getFileList()
+        return fileList!
     
     }
+    
+    func getFileListForCategory(category:Category) -> [Files] {
+        var fileList = context?.getFileListForCategory(category)
+        return fileList!
+        
+    }
+    
     
     func deleteFile() {
     
     }
     
+    
+    //Core Data
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "Cennest.dropFiles" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
