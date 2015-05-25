@@ -10,6 +10,8 @@
 		0C61D5A31B02126200E54774 /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C61D5A21B02126200E54774 /* Files.swift */; };
 		0C61D5A51B02148700E54774 /* NSManagedObjectContext+Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C61D5A41B02148700E54774 /* NSManagedObjectContext+Files.swift */; };
 		0C61D5A71B02149B00E54774 /* Files+Enhance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C61D5A61B02149B00E54774 /* Files+Enhance.swift */; };
+		0C6366011B131185005FD76F /* DataFilesRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6365FF1B131185005FD76F /* DataFilesRowCell.swift */; };
+		0C6366021B131185005FD76F /* DataFilesRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6366001B131185005FD76F /* DataFilesRowCell.xib */; };
 		0C739F151AFB461B007B0A81 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C739F141AFB461B007B0A81 /* DataManager.swift */; };
 		0C79C9CA1AF8CFDF00576B4A /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C79C9C91AF8CFDF00576B4A /* Users.swift */; };
 		0C79C9CC1AF8D3B400576B4A /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C79C9CB1AF8D3B400576B4A /* AlertController.swift */; };
@@ -68,6 +70,8 @@
 		0C61D5A21B02126200E54774 /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
 		0C61D5A41B02148700E54774 /* NSManagedObjectContext+Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Files.swift"; sourceTree = "<group>"; };
 		0C61D5A61B02149B00E54774 /* Files+Enhance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Files+Enhance.swift"; sourceTree = "<group>"; };
+		0C6365FF1B131185005FD76F /* DataFilesRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFilesRowCell.swift; sourceTree = "<group>"; };
+		0C6366001B131185005FD76F /* DataFilesRowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataFilesRowCell.xib; sourceTree = "<group>"; };
 		0C739F141AFB461B007B0A81 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0C79C9C91AF8CFDF00576B4A /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Users.swift; path = ../Users.swift; sourceTree = "<group>"; };
 		0C79C9CB1AF8D3B400576B4A /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C6365FA1B13031D005FD76F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C9DB9FC1AF0AF6A00771B6F /* Main.storyboard */,
+				0C9DBA011AF0AF6A00771B6F /* LaunchScreen.xib */,
+				0C6366001B131185005FD76F /* DataFilesRowCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		0C739F1C1AFB9C42007B0A81 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				0C9DBA181AF0B46300771B6F /* SignUpPageController.swift */,
+				0C6365FF1B131185005FD76F /* DataFilesRowCell.swift */,
 				0C9DBA1A1AF0B51F00771B6F /* LogInPageController.swift */,
 				0C79C9CB1AF8D3B400576B4A /* AlertController.swift */,
 				0CCAEB551B0A17A900745856 /* FileOraganizerViewController.swift */,
@@ -220,11 +235,10 @@
 		0C9DB9F21AF0AF6900771B6F /* dropFiles */ = {
 			isa = PBXGroup;
 			children = (
+				0C6365FA1B13031D005FD76F /* View */,
 				0CD7A5951B0E0A2300286D5D /* dropFiles-Bridging-Header.h */,
 				0C739F1C1AFB9C42007B0A81 /* Images */,
-				0C9DB9FC1AF0AF6A00771B6F /* Main.storyboard */,
 				0C9DB9FF1AF0AF6A00771B6F /* Images.xcassets */,
-				0C9DBA011AF0AF6A00771B6F /* LaunchScreen.xib */,
 				0C9DB9F51AF0AF6A00771B6F /* AppDelegate.swift */,
 				0C8998C11B00C1F400E9E6E1 /* Constants.swift */,
 				0C739F1D1AFB9C4F007B0A81 /* Model */,
@@ -446,6 +460,7 @@
 				0CCAEB5A1B0A1B8E00745856 /* images.png in Resources */,
 				0C7AE0681AFA1A58008CEBA9 /* admin-button-icon-hi.png in Resources */,
 				0C9DBA031AF0AF6A00771B6F /* LaunchScreen.xib in Resources */,
+				0C6366021B131185005FD76F /* DataFilesRowCell.xib in Resources */,
 				0CCAEB5B1B0A1B8E00745856 /* new_File.png in Resources */,
 				0C9DBA001AF0AF6A00771B6F /* Images.xcassets in Resources */,
 				0CCAEB5E1B0A1CB000745856 /* trash.png in Resources */,
@@ -481,6 +496,7 @@
 				0CB00DD01AFCF3C400CF0E87 /* NSManagedObjectContext+Users.swift in Sources */,
 				0CD7A6441B0E0E6200286D5D /* BlobContainer.m in Sources */,
 				0C79C9CA1AF8CFDF00576B4A /* Users.swift in Sources */,
+				0C6366011B131185005FD76F /* DataFilesRowCell.swift in Sources */,
 				0CD7A6491B0E0E6200286D5D /* CloudURLRequest.m in Sources */,
 				0CD7A6411B0E0E6200286D5D /* CloudStorageClient.m in Sources */,
 				0CD7A6511B0E0E6200286D5D /* PredicateParser.m in Sources */,
