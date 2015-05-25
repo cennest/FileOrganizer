@@ -9,27 +9,62 @@
 import Foundation
 import UIKit
 
-class FileOraganizerViewController : UIViewController , UITableViewDelegate, UITableViewDataSource {
+class FileOraganizerViewController : UIViewController , UITableViewDelegate, UITableViewDataSource , CloudStorageClientDelegate {
+    var credential:AuthenticationCredential = AuthenticationCredential()
+    var client:CloudStorageClient = CloudStorageClient()
+    var container:NSArray = NSArray()
+    var blobArray:NSArray = NSArray()
+    
+    var fileList = [Files]()
+    var dataManager = DataManager.sharedDataAccess()
+    var storageService:StorageService = StorageService()
     var selectedCategory:Category?
     var selectedTab:SelectionOptions?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "DataFilesRowCell")
+        self.tableView.delegate = self
+        credential = AuthenticationCredential(azureServiceAccount: "uploadanddownload", accessKey:"P2dEV/nSq0/1WV0BpWqyNZe6obmWRDMgqQ27WmcLxlqRX6AghcVAzEr7bPd3vplfSpPhBThDDPU3jAY2CySXLQ==")
+        
+        client = CloudStorageClient(credential: credential)
+        
+        client.delegate = self
+        
+        // get all blob containers
+        var containers = NSArray()
+        var error = NSError()
+        
+        client.getBlobContainersWithBlock({ (containers, error) -> Void in
+            if (error != nil) {
+                NSLog("%@", error.localizedDescription)
+            } else {
+                NSLog("%i containers were found…", containers.count)
+                if containers.count != 0 {
+                    self.container = NSArray(array: containers)
+                }
+            }
+        })
+        
+        self.getFileList()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    var items: [String] = ["We", "Heart", "Swift"]
     @IBOutlet weak var mainContainerView: UIView!
     @IBOutlet weak var sideBarView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     @IBAction func onDeleteTap(sender: AnyObject) {
         //delete file from db
         //refresh db
+        var image:UIImage = UIImage(named:"image.png")!
+        var data:NSData = UIImagePNGRepresentation(image);
+        self.deleteStoreData(data)
         //
     }
     
@@ -39,69 +74,25 @@ class FileOraganizerViewController : UIViewController , UITableViewDelegate, UIT
     }
     
     @IBAction func onUploadTap(sender: AnyObject) {
-//        var image = UIImage(named:"trash.png")
-//        var n = image?.size
-//        var imgData:NSData = UIImagePNGRepresentation(image);
-//        
-//        let url = NSURL(string:"/Users/kanchan/Documents/FileOrganizer/dropFiles/dropFiles/images.png")
-//        let data = NSData(contentsOfURL: url!)
+        var formatter = NSDateFormatter()
+        formatter.dateFromString("dd-MM-yyyy HH:mm")
         
-
+        
+        
+        
+        var image:UIImage = UIImage(named:"images.png")!
+        var data:NSData = UIImagePNGRepresentation(image);
+        
+        //service call n then set fileID
+        var res = dataManager.createFile("Image1", fileID: 1, size:"3kb", location: "f", createdDate:"1/2/90" , modifiedDate:"1/2/90", categoryID: 1, isDownloaded: false, userID: 1)
+        var res1 = dataManager.createFile("Image2", fileID: 1, size:"3kb", location: "f", createdDate:"1/2/90" , modifiedDate:"1/2/90", categoryID: 2, isDownloaded: false, userID: 1)
+        var res2 = dataManager.createFile("Image3", fileID: 1, size:"3kb", location: "f", createdDate:"1/2/90" , modifiedDate:"1/2/90", categoryID: 3, isDownloaded: false, userID: 1)
+        NSLog("%@", res)
+        
+        
         
         //add cell in table view
     }
-    
-//    func openfiledialog (windowTitle: String, message: String, filetypelist: String) -> String
-//    {
-//        var path: String = ""
-//        var finished: Bool = false
-//        
-////        suspendprocess (0.02) // Wait 20 ms., enough time to do screen updates regarding to the background job, which calls this function
-//        dispatch_async(dispatch_get_main_queue())
-//            {
-//                var myFiledialog = NSOpenPanel()
-//                var fileTypeArray: [String] = filetypelist.componentsSeparatedByString(",")
-//                
-//                myFiledialog.prompt = "Open"
-//                myFiledialog.worksWhenModal = true
-//                myFiledialog.allowsMultipleSelection = false
-//                myFiledialog.canChooseDirectories = false
-//                myFiledialog.resolvesAliases = true
-//                myFiledialog.title = windowTitle
-//                myFiledialog.message = message
-//                myFiledialog.allowedFileTypes = fileTypeArray
-//                
-//                let void = myFiledialog.runModal()
-//                
-//                var chosenfile = myFiledialog.URL // Pathname of the file
-//                
-//                if (chosenfile != nil)
-//                {
-//                    path = chosenfile!.absoluteString!
-//                }
-//                finished = true
-//        }
-//        
-//        while not(finished)
-//        {
-//            suspendprocess (0.001) // Wait 1 ms., loop until main thread finished
-//        }
-        
-//        return (path)
-//    }
-    
-//    func not (b: Bool) -> Bool
-//    {
-//        return (!b)
-//    }
-//    
-//    func suspendprocess (t: Double)
-//    {
-//        var secs: Int = Int(abs(t))
-//        var nanosecs: Int = Int(frac(abs(t)) * 1000000000)
-//        var time = timespec(tv_sec: secs, tv_nsec: nanosecs)
-//        let result = nanosleep(&time, nil)
-//    }
     
     @IBAction func onCreateNewFolderTap(sender: AnyObject) {
         //check selected folder path
@@ -115,13 +106,17 @@ class FileOraganizerViewController : UIViewController , UITableViewDelegate, UIT
     }
     
     @IBAction func onDocumentsTap(sender: AnyObject) {
-      selectedCategory = .Document
+        selectedCategory = .Document
+        self.fileList = self.getFileListForCategory(selectedCategory!)
+        tableView.reloadData()
         //fetch data from db
         //load data on table view
         //observe if ant file selected
     }
     @IBAction func onAllFolderTap(sender: AnyObject) {
         selectedTab = .AllFolder
+        self.fileList = []
+        tableView.reloadData()
         //fetch path and load data that are contain in folder (Grid View)
         //show path on text View
         //if any file selected again repeate step 2 and 3
@@ -130,21 +125,42 @@ class FileOraganizerViewController : UIViewController , UITableViewDelegate, UIT
     @IBAction func onImagesTap(sender: AnyObject) {
         selectedCategory = .Image
         selectedTab = .Image
+        self.fileList = self.getFileListForCategory(selectedCategory!)
+        tableView.reloadData()
     }
     
     @IBAction func onVideoTap(sender: AnyObject) {
         selectedCategory = .Video
         selectedTab = .Video
+        self.fileList = self.getFileListForCategory(selectedCategory!)
+        tableView.reloadData()
     }
     
+    //tableView
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        if self.fileList.count != 0 {
+            return self.fileList.count
+        }
+        return 0;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-        cell.textLabel.text = self.items[indexPath.row]
-        return cell
+        
+        
+        var cell: DataFilesRowCell? = self.tableView.dequeueReusableCellWithIdentifier("DataFilesRowCell") as? DataFilesRowCell
+        if cell == nil {
+            
+            let topLevelObjects = NSBundle.mainBundle().loadNibNamed("DataFilesRowCell", owner: self, options: nil)
+            cell = topLevelObjects[0] as? DataFilesRowCell;
+        }
+        
+        let file:Files = fileList[indexPath.row] as Files
+        
+        cell!.fileSize.text = file.size
+        cell!.fileTitle.text = file.title
+        cell!.createdDate.text = file.createdDate
+        return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -153,12 +169,52 @@ class FileOraganizerViewController : UIViewController , UITableViewDelegate, UIT
     }
     
     
+    func getFileList() -> [Files] {
+        self.fileList = dataManager.getFileList()
+        return self.fileList
+    }
+    
+    func getFileListForCategory(category:Category) -> [Files] {
+        self.fileList = dataManager.getFileListForCategory(category)
+        return self.fileList
+    }
+    
+    //Storage Service
+    func storeData(data:NSData) {
+        storageService.addBlob(data)
+    }
+    
+    func getStoreData() {
+        storageService.getBlob() //get all data
+    }
+    
+    func getBlob() {
+        
+        client.getBlobs(container.objectAtIndex(0) as BlobContainer, withBlock: ({ (blobs, error) -> Void in
+            if (error != nil) {
+                NSLog("%@", error.localizedDescription)
+            } else {
+                NSLog("%i blobs were found in the images container…", blobs.count)
+                if blobs.count != 0 {
+                    self.blobArray = NSArray(array: blobs)
+                }
+                for  var index:Int = 0; index < self.blobArray.count; index++ {
+                    NSLog("%@", self.blobArray.objectAtIndex(index) as Blob)
+                }
+            }
+        }))
+    }
+    
+    func deleteStoreData(data:NSData) {
+        storageService.deleteBlob(data)
+    }
+    
 }
 
 extension FileOraganizerViewController {
-
+    
     func refrestTableView(selectedTab:SelectionOptions) {
-    //sort data according to category
+        //sort data according to category
     }
     
     

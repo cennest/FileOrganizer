@@ -9,20 +9,22 @@
 import Foundation
 import UIKit
 
-class AzureViewController: UIViewController, CloudStorageClientDelegate {
+class StorageService: CloudStorageClientDelegate {
     var credential:AuthenticationCredential = AuthenticationCredential()
     var client:CloudStorageClient = CloudStorageClient()
     var container:NSArray = NSArray()
     var blobArray:NSArray = NSArray()
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        credential = AuthenticationCredential(azureServiceAccount: "uploadanddownload", accessKey: "P2dEV/nSq0/1WV0BpWqyNZe6obmWRDMgqQ27WmcLxlqRX6AghcVAzEr7bPd3vplfSpPhBThDDPU3jAY2CySXLQ==")
+    func setContainer() {
+        credential = AuthenticationCredential(azureServiceAccount: "uploadanddownload", accessKey:"P2dEV/nSq0/1WV0BpWqyNZe6obmWRDMgqQ27WmcLxlqRX6AghcVAzEr7bPd3vplfSpPhBThDDPU3jAY2CySXLQ==")
         
         client = CloudStorageClient(credential: credential)
         
-        client.delegate = self
+        
+        let appDelegate  = UIApplication.sharedApplication().keyWindow
+        var viewController = appDelegate?.rootViewController as FileOraganizerViewController
+        client.delegate = viewController
         
         // get all blob containers
         var containers = NSArray()
@@ -40,23 +42,38 @@ class AzureViewController: UIViewController, CloudStorageClientDelegate {
         })
     }
     
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func addBlob (data:NSData) {
+        var boundary:NSString = "random string of your choosing"
+        var contentType:NSString = NSString(format: "multipart/form-data; boundary=%@", boundary)
+        client.addBlobToContainer(container.objectAtIndex(0) as BlobContainer, blobName:"images.png", contentData: data, contentType: contentType)
     }
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    func getBlob() {
+        
+        client.getBlobs(container.objectAtIndex(0) as BlobContainer, withBlock: ({ (blobs, error) -> Void in
+            if (error != nil) {
+                NSLog("%@", error.localizedDescription)
+            } else {
+                NSLog("%i blobs were found in the images container…", blobs.count)
+                if blobs.count != 0 {
+                    self.blobArray = NSArray(array: blobs)
+                }
+                for  var index:Int = 0; index < self.blobArray.count; index++ {
+                    NSLog("%@", self.blobArray.objectAtIndex(index) as Blob)
+                }
+            }
+        }))
     }
-    */
     
+    func deleteBlob (data:NSData) {
+        client.deleteBlob(blobArray.objectAtIndex(blobArray.count - 3) as Blob, withBlock:({(error) -> Void in
+            if (error != nil) {
+                NSLog("%@", error.localizedDescription)
+            } else {
+                NSLog("Delete Sucessfully...")
+            }
+            
+        }))
+    }
 }
 
