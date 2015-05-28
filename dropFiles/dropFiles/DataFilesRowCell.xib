@@ -20,13 +20,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Created Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAa-J0-6Yb">
-                        <rect key="frame" x="189" y="12" width="119" height="21"/>
+                        <rect key="frame" x="189" y="13" width="129" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMR-ub-5JV">
-                        <rect key="frame" x="399" y="12" width="42" height="21"/>
+                        <rect key="frame" x="341" y="14" width="100" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                 <outlet property="fileSize" destination="LMR-ub-5JV" id="a1a-if-lCJ"/>
                 <outlet property="fileTitle" destination="XnP-cN-UzB" id="1bP-aX-p7B"/>
             </connections>
-            <point key="canvasLocation" x="140" y="149.5"/>
+            <point key="canvasLocation" x="140" y="146.5"/>
         </tableViewCell>
     </objects>
 </document>
