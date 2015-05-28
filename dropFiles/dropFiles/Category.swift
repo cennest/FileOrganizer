@@ -9,15 +9,9 @@
 import Foundation
 
 
-enum Category {
-    case Document
+enum Category: Int {
+    case Document = 1
     case Image
     case Video
-}
-
-enum SelectionOptions {
-    case Document
-    case Image
-    case Video
-    case AllFolder
+    case Folder
 }

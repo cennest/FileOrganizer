@@ -10,15 +10,15 @@ import Foundation
 import CoreData
 
 class Files: NSManagedObject {
-
+    
     @NSManaged var title: String
     @NSManaged var fileID: NSNumber
     @NSManaged var size: String
     @NSManaged var location: String
     @NSManaged var createdDate: String
     @NSManaged var modifiedDate: String
-    @NSManaged var categoryID: NSNumber
-    @NSManaged var isDownloaded: NSNumber
+    @NSManaged var category: NSNumber
+    @NSManaged var isDownloaded: Bool
     @NSManaged var userID: NSNumber
-
+    
 }

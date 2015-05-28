@@ -11,18 +11,13 @@ import CoreData
 
 extension Users {
     
-    func createNewUser(userName:String, userPassword:String,userFirstName:String, userLastName:String, userEmail:String) -> Users {
-        
-        self.userid = 1
+    func addUserDetail(userName:String, userPassword:String,userFirstName:String, userLastName:String, userEmail:String) -> Users {
+        self.userid = 0
         self.username = userName
         self.password = userPassword
         self.email = userEmail
         self.firstName = userFirstName
         self.lastName = userLastName
-        
         return self
     }
-    
-    
-    
-}
+ }

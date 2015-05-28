@@ -20,7 +20,6 @@ class DataManager:NSObject {
     }
     
     lazy var context : NSManagedObjectContext? = {
-        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         if let managedContext : NSManagedObjectContext? = self.managedObjectContext {
             return managedContext
         } else {
@@ -28,15 +27,13 @@ class DataManager:NSObject {
         }
         }()
     
-    
-    
     func createNewUser(userName:String, userPassword:String,userFirstName:String, userLastName:String, userEmail:String) -> Users {
         
         var error:NSError?
         var newUser = context?.createUser(userName, userPassword: userPassword, userFirstName: userFirstName, userLastName: userLastName, userEmail: userEmail)
         context?.save(&error)
         if let err = error {
-            println(err.description)
+            NSLog(err.description)
         }
         self.saveContext()
         return newUser!
@@ -58,40 +55,35 @@ class DataManager:NSObject {
         return isLoginSuccess!
     }
     
-    func createFile(title:String, fileID:NSNumber, size:String, location:String, createdDate:String , modifiedDate:String , categoryID: NSNumber, isDownloaded:Bool, userID:NSNumber) -> Files {
+    func createFile(title:String, fileID:Int, size:String, location:String, createdDate:String , modifiedDate:String , category: Category, isDownloaded:Bool, userID:Int) -> Files {
         var error:NSError?
-        var newUser = context?.insertData(title, fileID: fileID, size: size, location: location, createdDate: createdDate, modifiedDate: modifiedDate, categoryID: categoryID, isDownloaded: isDownloaded, userID: userID)
+        var newUser = context?.createNewFile(title, fileID: fileID, size: size, location: location, createdDate: createdDate, modifiedDate: modifiedDate, category: category, isDownloaded: isDownloaded, userID: userID)
         context?.save(&error)
         if let err = error {
-            println(err.description)
+            NSLog(err.description)
         }
         self.saveContext()
         return newUser!
     }
     
-    func uploadFile() {
-    
-    }
-    
     func downloadFile() {
-    
+        
     }
-
+    
     func getFileList() -> [Files] {
         var fileList = context?.getFileList()
         return fileList!
-    
+        
     }
     
     func getFileListForCategory(category:Category) -> [Files] {
         var fileList = context?.getFileListForCategory(category)
         return fileList!
-        
     }
     
     
     func deleteFile() {
-    
+        
     }
     
     
@@ -130,7 +122,6 @@ class DataManager:NSObject {
             NSLog("Unresolved error \(error), \(error!.userInfo)")
             abort()
         }
-        
         return coordinator
         }()
     
@@ -144,18 +135,22 @@ class DataManager:NSObject {
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
         }()
-
+    
     
     func saveContext () {  //call  self.saveContext()
-        if let moc = self.managedObjectContext {
-            var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+        let context:NSManagedObjectContext = self.managedObjectContext!
+        if context.hasChanges {
+            
+            context.performBlockAndWait{
+                var saveError:NSError?
+                let saved = context.save(&saveError)
+                
+                if !saved {
+                    if let error = saveError{
+                        NSLog("Warning!! Saving error \(error.description)")
+                    }
+                }
             }
         }
     }
-
 }

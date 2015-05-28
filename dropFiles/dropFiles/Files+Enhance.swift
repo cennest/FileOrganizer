@@ -10,15 +10,15 @@ import Foundation
 
 extension Files {
     
-    func insertNewFile(title:String, fileID:NSNumber, size:String, location:String, createdDate:String , modifiedDate:String , categoryID: NSNumber, isDownloaded:Bool, userID:NSNumber) -> Files {
-        
+    func addFileDetail(title:String, fileID:Int, size:String, location:String, createdDate:String , modifiedDate:String , category: Category, isDownloaded:Bool, userID:Int) -> Files {
+        println(category)
         self.title = title
-        self.fileID = 1
+        self.fileID = fileID
         self.size = size
         self.location = location
         self.createdDate = createdDate
         self.modifiedDate = modifiedDate
-        self.categoryID = categoryID
+        self.category = category.rawValue
         self.isDownloaded = isDownloaded
         self.userID = userID
         return self
