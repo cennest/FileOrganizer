@@ -18,9 +18,10 @@ class LoginPageController: UIViewController {
     @IBOutlet weak var logInTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var passwordErrorLabel: UILabel!
+    @IBOutlet weak var userNameErrorLabel: UILabel!
     @IBOutlet weak var loginView: UIView!
-    let alertController:AlertController = AlertController()
-    
+    var isCredintialValid:Bool = true
     
     override func viewDidAppear(animated: Bool) {
         var ovalRect = CGRect(x:-5,y:-5 ,width: 310 ,height: 310)
@@ -31,10 +32,6 @@ class LoginPageController: UIViewController {
         layer.shadowColor = UIColor.orangeColor().CGColor
         layer.shadowOpacity = 1
         layer.shadowOffset = CGSize(width: 0, height: 0)
-    }
-    
-    @IBAction func handleForgotPasswordTap(sender: AnyObject) {
-      
     }
     
     @IBAction func handleSignInTap(sender: AnyObject) {
@@ -50,28 +47,73 @@ class LoginPageController: UIViewController {
     
     func verifyUser(userName:String, password:String) {
         var dataManager = DataManager.sharedDataAccess()
-        var result = dataManager.userLogin(userName,password:password)
+        var isValidUser = dataManager.userLogin(userName,password:password)
         
-        if result {
-            alertController.showMessage(UsersConstants.kSuccessfulSignInMessage, controller: self)
-            
-            var storyboard:UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
-            var vc:UIViewController = storyboard.instantiateViewControllerWithIdentifier("fileViewController") as FileOraganizerViewController
-            self.presentViewController(vc, animated:true, completion:nil)
+        if isValidUser {
+            self.onSuccessfulLogin()
         } else {
-            alertController.showMessage(UsersConstants.kFailingSignInMessage, controller: self)
+            self.onLoginFailure()
         }
     }
     
-    func checkCredential(userName:String, password:String)  -> Bool {
-        if userName.isEmpty {
-            alertController.showMessage(UsersConstants.kEnterUserName, controller: self)
-            return false
-        }
-        if password.isEmpty {
-            alertController.showMessage(UsersConstants.kEnterPassword, controller: self)
-            return false
-        }
-        return true
+    func onLoginFailure() {
+        let alertController:UIAlertController = UIAlertController(title: UsersConstants.kFailingSignInTitle , message: UsersConstants.kFailingSignInMessage, preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: CommonConstants.kOk, style: UIAlertActionStyle.Default, handler:nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    func onSuccessfulLogin() {
+        let alertController = UIAlertController(title: UsersConstants.kSuccessfulSignInTitle, message: UsersConstants.kSuccessfulSignInMessage, preferredStyle: .Alert)
+        var okAction = UIAlertAction(title: CommonConstants.kOk, style: UIAlertActionStyle.Default) {
+            UIAlertAction in
+            self.handleOk()
+        }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func handleOk() {
+        var storyboard:UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
+        let vc : AnyObject! = storyboard.instantiateViewControllerWithIdentifier(FileOraganizerViewControllerConstants.kStoryboardIdentifier)  as UIViewController
+        self.presentViewController(vc as FileOraganizerViewController, animated: true, completion: nil)
+    }
+    
+    func checkCredential(userName:String, password:String)  -> Bool {
+        isCredintialValid = true
+        self.validateUserName(userName)
+        self.validatePassword(password)
+        if isCredintialValid == true {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func validateUserName(userName:String)-> Bool {
+        var message:String?
+        if userName.isEmpty {
+            userNameErrorLabel.hidden = false
+            userNameErrorLabel.text = UsersConstants.kEnterUserName
+            isCredintialValid = false
+            return false
+        } else {
+            userNameErrorLabel.hidden = true
+            return true
+        }
+    }
+    
+    func validatePassword(userName:String)-> Bool {
+        var message:String?
+        if userName.isEmpty {
+            passwordErrorLabel.hidden = false
+            passwordErrorLabel.text = UsersConstants.kEnterPassword
+            isCredintialValid = false
+            return false
+        } else {
+            passwordErrorLabel.hidden = true
+            return true
+        }
+    }
+    
+    
 }

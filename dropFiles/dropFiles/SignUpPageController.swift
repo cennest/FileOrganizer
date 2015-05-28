@@ -16,7 +16,6 @@ class SignUpPageController: UIViewController {
     
     var isCredintialValid:Bool = true
     let loginController:LoginPageController = LoginPageController()
-    let alertController:AlertController = AlertController()
     var dataManager = DataManager.sharedDataAccess()
     
     
@@ -41,18 +40,27 @@ class SignUpPageController: UIViewController {
         var isValidCredential =  self.checkCredential(user)
         //store data
         if isValidCredential {
-            var isValidUser = self.isUserNameValid(user.userName, email: user.email)
-            if isValidUser {
-                var isDataStore = self.storeRegisterData(user)
-                if isDataStore {
-                    self.clearTextField()
-                    alertController.showMessage(UsersConstants.kSuccessfulSignUpMessage,controller: self)
-                    userNameTextField.becomeFirstResponder()
-                } else {
-                    alertController.showMessage(UsersConstants.kErrorMessage,controller: self)
-                }
+            var isDataStore = self.storeRegisterData(user)
+            if isDataStore {
+                self.clearTextField()
+                self.onSuccessfulSignUp()
+                userNameTextField.becomeFirstResponder()
+            } else {
+                self.onSignUpFailure()
             }
         }
+    }
+    
+    func onSignUpFailure() {
+        let alertController:UIAlertController = UIAlertController(title: UsersConstants.kFailureSignUpTitle, message: UsersConstants.kFailureSignUpMessge , preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: CommonConstants.kOk, style: UIAlertActionStyle.Default, handler:nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func onSuccessfulSignUp() {
+        let alertController:UIAlertController = UIAlertController(title: UsersConstants.kSuccessfulSignUpTitle , message: UsersConstants.kSuccessfulSignUpMessage, preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title:CommonConstants.kOk, style: UIAlertActionStyle.Default, handler:nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     @IBAction func handleSignInPage(sender: AnyObject) {
@@ -77,21 +85,24 @@ class SignUpPageController: UIViewController {
     }
     
     
-    func isUserNameValid(userName:String, email:String) -> Bool {
-        var flag = true
+    func isUserNameAvailable(userName:String) -> Bool {
+        var flag = false
         var isUserAvail:Bool = dataManager.isUserNameAvailable(userName)
-        var isUserRegister:Bool = dataManager.isUserRegistered(email)
         if isUserAvail {
-            alertController.showMessage(UsersConstants.kUserNameExists,controller: self)
             userNameTextField.text = ""
             userNameTextField.becomeFirstResponder()
-            flag = false
+            flag = true
         }
+        return flag
+    }
+    
+    func isEmailIDRegister(email:String) -> Bool {
+        var flag = false
+        var isUserRegister:Bool = dataManager.isUserRegistered(email)
         if isUserRegister {
-            alertController.showMessage(UsersConstants.kEmailIDRegistered,controller: self)
             emailTextField.text = ""
             emailTextField.becomeFirstResponder()
-            flag = false
+            flag = true
         }
         return flag
     }
@@ -157,7 +168,10 @@ class SignUpPageController: UIViewController {
             message = UsersConstants.kEnterEmailID
         } else if !isValidFormat {
             message = UsersConstants.kInvalidEmailID
+        } else if isEmailIDRegister(email) {
+            message = UsersConstants.kEmailIDRegistered
         }
+        
         if (message != nil) {
             emailErrorLabel.hidden = false
             emailErrorLabel.text = message
@@ -175,6 +189,8 @@ class SignUpPageController: UIViewController {
             message = UsersConstants.kEnterUserName
         } else if !isValidFormat {
             message = UsersConstants.kInvalidUserName
+        } else if isUserNameAvailable(userName) {
+            message = UsersConstants.kUserNameExists
         }
         if (message != nil) {
             userNameErrorLabel.hidden = false

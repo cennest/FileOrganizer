@@ -16,17 +16,18 @@ class StorageService: CloudStorageClientDelegate {
     var blobArray:NSArray = NSArray()
     
     
-    func setContainer() {
-        credential = AuthenticationCredential(azureServiceAccount: "uploadanddownload", accessKey:"P2dEV/nSq0/1WV0BpWqyNZe6obmWRDMgqQ27WmcLxlqRX6AghcVAzEr7bPd3vplfSpPhBThDDPU3jAY2CySXLQ==")
+    func setContainer() -> CloudStorageClient {
+        credential = AuthenticationCredential(azureServiceAccount: StorageServiceConstants.kAzureAccountName, accessKey:StorageServiceConstants.kAzureAccountKey)
         
         client = CloudStorageClient(credential: credential)
         
+        //        let appDelegate  = UIApplication.sharedApplication().keyWindow
+        //        var viewController = appDelegate?.rootViewController as FileOraganizerViewController
         
-        let appDelegate  = UIApplication.sharedApplication().keyWindow
-        var viewController = appDelegate?.rootViewController as FileOraganizerViewController
-        client.delegate = viewController
-        
-        // get all blob containers
+        return client
+    }
+    
+    func getBlobContainer() { // get all blob containers
         var containers = NSArray()
         var error = NSError()
         
@@ -34,7 +35,7 @@ class StorageService: CloudStorageClientDelegate {
             if (error != nil) {
                 NSLog("%@", error.localizedDescription)
             } else {
-                NSLog("%i containers were found…", containers.count)
+                NSLog(StorageServiceConstants.kLogMessageForContainerFound, containers.count)
                 if containers.count != 0 {
                     self.container = NSArray(array: containers)
                 }
@@ -42,10 +43,11 @@ class StorageService: CloudStorageClientDelegate {
         })
     }
     
-    func addBlob (data:NSData) {
-        var boundary:NSString = "random string of your choosing"
-        var contentType:NSString = NSString(format: "multipart/form-data; boundary=%@", boundary)
-        client.addBlobToContainer(container.objectAtIndex(0) as BlobContainer, blobName:"images.png", contentData: data, contentType: contentType)
+    func addBlob(data:NSData, name:String) -> NSString {
+        var contentType:NSString = NSString(format: StorageServiceConstants.kBlobContentType, StorageServiceConstants.kBlobBoundry)
+        client.addBlobToContainer(container.objectAtIndex(0) as BlobContainer, blobName:name, contentData: data, contentType: contentType)
+        var url = container.objectAtIndex(0).URL
+        return "\(url)/\(name)"
     }
     
     func getBlob() {
@@ -54,7 +56,7 @@ class StorageService: CloudStorageClientDelegate {
             if (error != nil) {
                 NSLog("%@", error.localizedDescription)
             } else {
-                NSLog("%i blobs were found in the images container…", blobs.count)
+                NSLog(StorageServiceConstants.kLogMessageForBlobFoundMessage, blobs.count)
                 if blobs.count != 0 {
                     self.blobArray = NSArray(array: blobs)
                 }
